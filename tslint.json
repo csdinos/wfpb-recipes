@@ -1,0 +1,83 @@
+{
+  "rules": {
+    "arrow-parens": false,
+    "arrow-return-shorthand": [false],
+    "comment-format": [true, "check-space"],
+    "interface-over-type-literal": false,
+    "interface-name": false,
+    "max-line-length": [false],
+    "max-file-line-count": [true, 300],
+    "promise-function-async": true,
+    "member-access": true,
+    "no-parameter-reassignment": true,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "public-instance-field",
+          "public-constructor",
+          "private-static-field",
+          "private-instance-field",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ],
+        "alphabetize": true
+      }
+    ],
+    "no-console": [false, "log", "error"],
+    "no-debugger": true,
+    "no-consecutive-blank-lines": [true, 2],
+    "no-arg": true,
+    "no-eval": true,
+    "max-classes-per-file": [true, 1],
+    "no-duplicate-super": true,
+    "no-async-without-await": true,
+    "no-duplicate-variable": true,
+    "curly": true,
+    "newline-before-return": false,
+    "no-any": false,
+    "no-empty-interface": false,
+    "no-inferrable-types": [true, "ignore-params", "ignore-properties"],
+    "no-namespace": false,
+    "no-null-keyword": false,
+    "no-require-imports": false,
+    "no-shadowed-variable": false,
+    "no-submodule-imports": [false],
+    "no-this-assignment": [
+      true,
+      {
+        "allow-destructuring": true
+      }
+    ],
+    "no-trailing-whitespace": true,
+    "prefer-const": true,
+    "object-literal-sort-keys": false,
+    "object-literal-shorthand": false,
+    "one-variable-per-declaration": [false],
+    "only-arrow-functions": [true, "allow-declarations"],
+    "ordered-imports": [false],
+    "prefer-method-signature": false,
+    "prefer-template": [true, "allow-single-concat"],
+    "quotemark": [true, "single", "jsx-double"],
+    "semicolon": [true, "never"],
+    "triple-equals": [true, "allow-null-check"],
+    "type-literal-delimiter": true,
+    "typedef": true,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "allow-snake-case",
+      "allow-leading-underscore"
+    ],
+    "no-implicit-dependencies": [true, ["@appRoot", "@shared", "express", "supertest", "testcontainers"]],
+    "whitespace": [true, "check-branch", "check-operator"],
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false
+  }
+}
