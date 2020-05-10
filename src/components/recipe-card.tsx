@@ -1,11 +1,17 @@
 import * as React from 'react'
 import { Card, CardMedia, CardActionArea, makeStyles, CardContent, Typography} from '@material-ui/core'
-import { FunctionComponent } from 'react'
-import { Recipe } from '@appRoot/types'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-type IRecipeCard = Recipe
+// TODO: add custom interface
+// interface IRecipeCard extends RouteComponentProps<any> {
+//   description: string;
+//   id: string;
+//   image: string;
+//   title: string;
+//   // history: History;
+// }
 
-export const RecipeCard: FunctionComponent<IRecipeCard> = ({image, title, description}) => {
+export const RecipeCardComponent: React.FunctionComponent<RouteComponentProps> = ({history, image, title, description, id}) => {
   const classes = makeStyles({
     root: {
       maxWidth: 345,
@@ -16,8 +22,8 @@ export const RecipeCard: FunctionComponent<IRecipeCard> = ({image, title, descri
   })()
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
+    <Card className={classes.root} onClick={() => {history.push(`recipe/${id}`)}}>
+      <CardActionArea >
         <CardMedia
           className={classes.media}
           image={image}
@@ -31,3 +37,5 @@ export const RecipeCard: FunctionComponent<IRecipeCard> = ({image, title, descri
     </Card>
   )
 }
+
+export const RecipeCard = withRouter(RecipeCardComponent)

@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Route exact path={'/'} component={HomePage} />
       <Route exact path={'/create-recipe'} component={CreateRecipePage} />
-      <Route path={'/recipe/:recipeId'} component={RecipePage} />
+      <Route path={'/recipe/:rid'} component={RecipePage} />
     </Container>
   )
 }

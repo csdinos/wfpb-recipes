@@ -24,6 +24,7 @@ export const RecipeList: FunctionComponent<IRecipeList> = ({ recipes }) => {
           return (
             <Grid item xs={4} key={i}>
               <RecipeCard
+                id={recipe.id}
                 image={image}
                 title={title}
                 description={description}
