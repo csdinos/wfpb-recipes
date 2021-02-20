@@ -1,3 +1,17 @@
+:root {
+  --dark: #202020;
+  --light-dark: #3F3F3F;
+  --gray: #707070;
+  --yelloy: #FFDF6C;
+  --white: #FFFFFF;
+  --light-green: #9DC88D;
+  --green: #4D774E;
+  --dark-green: #164A41;
+}
 .App {
   text-align: center;
+}
+
+.main-container {
+  padding: 20px;
 }

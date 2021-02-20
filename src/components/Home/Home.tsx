@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {firestore} from '@appRoot/firebase/firebase.utils'
 import { RecipeList } from '@appRoot/components'
-import {Typography, CircularProgress, Button } from '@material-ui/core'
+import {Typography, CircularProgress, Button, Box} from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 
-function HomePageComponent({ history }) {
-  const [recipes, setRecipes] = useState([])
+function Home({ history }) {
+  const [recipes, setRecipes] = useState(null)
   const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
@@ -17,17 +17,24 @@ function HomePageComponent({ history }) {
       setRecipes(querySnapshot.docs)
     }
 
-    try {
-      getRecipes()
-    } catch (e) {
+    getRecipes().catch(e => {
       console.log(e)
       setHasError(true)
-    }
+    })
   }, [])
 
+  if (hasError) {
+    return <Typography>There has been an error, please try again later.</Typography>
+  }
+
+  if (!recipes) {
+    return <Box textAlign="center">
+      <CircularProgress/>
+    </Box>
+  }
   return (
-    <div style={{display: 'flex', flexFlow: 'column', justifyContent: 'space-between'}}>
-      <div style={{marginBottom: 20, textAlign: 'center'}}>
+    <div>
+      <Box marginBottom={2} textAlign="center">
         <Button
           type="submit"
           variant="contained"
@@ -36,17 +43,11 @@ function HomePageComponent({ history }) {
         >
           Create a recipe
         </Button>
-      </div>
+      </Box>
 
-      { hasError && (
-        <Typography>
-          There has been an error, please try again later.
-        </Typography>
-      )}
-
-      { recipes.length ? <RecipeList recipes={recipes} /> : <CircularProgress />}
+      <RecipeList recipes={recipes} />
     </div>
   )
 }
 
-export const HomePage = withRouter(HomePageComponent)
+export default withRouter(Home)
