@@ -5,7 +5,12 @@ const useStyles = makeStyles(() => ({
   dynamicFieldContainer: {
     marginBottom: 20,
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  nestedField: {
+    width: '100%',
+    marginRight: 20
   }
 }))
 
@@ -15,9 +20,11 @@ export const DynamicField = (props) => {
 
   const getFields = (value, idx) => {
     if (multipleFields) {
-      return <div>
-        {fields.map((field) => {
+      return <>
+        {fields.map((field, i) => {
           return <TextField
+            key={i}
+            className={classes.nestedField}
             label={field}
             multiline
             value={value[field]}
@@ -30,7 +37,7 @@ export const DynamicField = (props) => {
             }
           />
         })}
-      </div>
+      </>
     }
 
     return <TextField
@@ -58,7 +65,7 @@ export const DynamicField = (props) => {
           <Button
             size="small"
             variant="contained"
-            color="secondary"
+            color="default"
             onClick={() => {
               values.splice(idx, 1)
               setter(values)
@@ -67,6 +74,7 @@ export const DynamicField = (props) => {
       ))}
       <Button
         variant="contained"
+        size="small"
         color="default"
         onClick={() => {
           const newValue = multipleFields ? fields.reduce((res, field) => {
